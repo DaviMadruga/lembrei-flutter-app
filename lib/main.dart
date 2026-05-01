@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lembrei/screens/home_screens.dart';
 import 'package:lembrei/theme/app_theme.dart';
 
 void main() {
@@ -13,31 +14,7 @@ class LembreiApp extends StatelessWidget {
     return MaterialApp(
       title: 'Lembrei!',
       theme: AppTheme.lightTheme,
-      home: const MyHomePage(title: 'Lembrei!'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Container(),
-      ),
+      home: const HomeScreens(),
     );
   }
 }
