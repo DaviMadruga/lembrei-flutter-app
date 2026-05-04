@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lembrei/screens/register_screens.dart';
 import 'package:lembrei/theme/app_colors.dart';
 import 'package:lembrei/widgets/home/cards.dart';
 import 'package:lembrei/widgets/home/filters_status.dart';
@@ -32,7 +33,14 @@ class HomeScreens extends StatelessWidget {
         width: 70,
         height: 70,
         child: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context, 
+              MaterialPageRoute(
+                builder: (context) => RegisterScreens(),
+              ),
+            );
+          },
           backgroundColor: AppColors.principal,
           elevation: 6,
           shape: CircleBorder(),
