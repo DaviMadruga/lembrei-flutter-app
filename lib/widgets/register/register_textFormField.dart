@@ -27,7 +27,7 @@ class RegisterTextformfield extends StatelessWidget {
             style: AppTextStyles.tituloMedio,
           ),
       
-          SizedBox(height: 10,),
+          SizedBox(height: 8,),
       
           TextFormField(
             validator: ValidationBuilder(
@@ -43,7 +43,6 @@ class RegisterTextformfield extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12),
                 borderSide: BorderSide(color: AppColors.textoSecundario),
               )
-              
             ),
           ),
         ],

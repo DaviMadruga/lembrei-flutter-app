@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:form_validator/form_validator.dart';
 import 'package:lembrei/theme/app_colors.dart';
 import 'package:lembrei/theme/app_text_styles.dart';
 
@@ -60,26 +61,6 @@ class _RegisterDateTime extends State<RegisterDateTime> {
     }
   }
 
-  InputDecoration _decoration({required IconData icon, required String hint}) {
-    return InputDecoration(
-      hintText: hint,
-      prefixIcon: Icon(icon),
-      suffixIcon: const Icon(Icons.keyboard_arrow_down),
-      filled: true,
-      fillColor: Colors.grey[100],
-      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-      border: OutlineInputBorder(borderRadius: BorderRadius.circular(14)),
-      enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(14),
-        borderSide: BorderSide(color: AppColors.textoSecundario),
-      ),
-      focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(14),
-        borderSide: BorderSide(color: AppColors.principal, width: 2),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -93,16 +74,23 @@ class _RegisterDateTime extends State<RegisterDateTime> {
             controller: dateController,
             readOnly: true,
             onTap: _selectDate,
-            decoration: _decoration(
-              icon: Icons.calendar_today_outlined,
-              hint: "28/04/2026",
+            decoration: InputDecoration(
+              prefixIcon:Icon(Icons.calendar_today_outlined),
+              suffixIcon: Icon(Icons.keyboard_arrow_down),
+              hintText: 
+                "${DateTime.now().day.toString().padLeft(2, '0')}/"
+                "${DateTime.now().month.toString().padLeft(2, '0')}/"
+                "${DateTime.now().year}",
+              filled: true,
+              fillColor: Colors.grey[100],
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+                borderSide: BorderSide(color: AppColors.textoSecundario),
+              )
             ),
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return "Selecione uma data";
-              }
-              return null;
-            },
+            validator: ValidationBuilder(
+              requiredMessage: "Selecione uma data"
+            ).build(),
           ),
       
           const SizedBox(height: 20),
@@ -113,13 +101,22 @@ class _RegisterDateTime extends State<RegisterDateTime> {
             controller: timeController,
             readOnly: true,
             onTap: _selectTime,
-            decoration: _decoration(icon: Icons.access_time, hint: "14:30"),
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return "Selecione uma hora";
-              }
-              return null;
-            },
+            decoration: InputDecoration(
+              prefixIcon:Icon(Icons.access_alarm_outlined),
+              suffixIcon: Icon(Icons.keyboard_arrow_down),
+              hintText: 
+                "${DateTime.now().hour.toString().padLeft(2, '0')}:"
+                "${DateTime.now().minute.toString().padLeft(2, '0')}",
+              filled: true,
+              fillColor: Colors.grey[100],
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+                borderSide: BorderSide(color: AppColors.textoSecundario),
+              )
+            ),
+            validator: ValidationBuilder(
+              requiredMessage: "Selecione uma hora"
+            ).build(),
           ),
         ],
       ),
