@@ -15,7 +15,13 @@ class RegisterSalve extends StatelessWidget {
             borderRadius: BorderRadiusGeometry.circular(12),
           ),
         ),
-        onPressed: (){}, 
+        onPressed: () {
+          final isValid = Form.of(context).validate();
+
+          if (isValid) {
+            // Continua aqui com a logica de salvar.
+          }
+        }, 
         child: Text(
           "Salvar lembrete",
           style: TextStyle(

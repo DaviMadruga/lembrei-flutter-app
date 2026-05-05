@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:form_validator/form_validator.dart';
 import 'package:lembrei/theme/app_colors.dart';
 import 'package:lembrei/theme/app_text_styles.dart';
 
@@ -29,12 +30,9 @@ class RegisterTextformfield extends StatelessWidget {
           SizedBox(height: 10,),
       
           TextFormField(
-            validator: (value) {
-              if(value == null || value.isEmpty){
-                return "Campo obrigatório";
-              }
-              return null;
-            },
+            validator: ValidationBuilder(
+              requiredMessage: "Campo Obrigatório"
+            ).build(),
             maxLines: linhas,
             decoration: InputDecoration(
               labelText: exemplo,
@@ -45,6 +43,7 @@ class RegisterTextformfield extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12),
                 borderSide: BorderSide(color: AppColors.textoSecundario),
               )
+              
             ),
           ),
         ],

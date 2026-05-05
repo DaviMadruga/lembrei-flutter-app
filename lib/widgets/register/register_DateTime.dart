@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lembrei/theme/app_colors.dart';
 import 'package:lembrei/theme/app_text_styles.dart';
 
 class RegisterDateTime extends StatefulWidget {
@@ -65,16 +66,16 @@ class _RegisterDateTime extends State<RegisterDateTime> {
       prefixIcon: Icon(icon),
       suffixIcon: const Icon(Icons.keyboard_arrow_down),
       filled: true,
-      fillColor: const Color(0xFFF9F9FB),
+      fillColor: Colors.grey[100],
       contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
       border: OutlineInputBorder(borderRadius: BorderRadius.circular(14)),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(14),
-        borderSide: const BorderSide(color: Color(0xFFE0E0E0)),
+        borderSide: BorderSide(color: AppColors.textoSecundario),
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(14),
-        borderSide: const BorderSide(color: Colors.deepPurple, width: 2),
+        borderSide: BorderSide(color: AppColors.principal, width: 2),
       ),
     );
   }
