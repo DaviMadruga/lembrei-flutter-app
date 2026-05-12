@@ -10,6 +10,8 @@ class RegisterCategory extends StatefulWidget {
 }
 
 class _RegisterCategoryState extends State<RegisterCategory> {
+  String? categoriaSelecionada;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -25,14 +27,18 @@ class _RegisterCategoryState extends State<RegisterCategory> {
             children: [
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.background,
+                  backgroundColor: categoriaSelecionada == "Saúde" ? AppColors.principal : AppColors.background,
                   side: BorderSide(color: AppColors.principal),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  setState(() {
+                    categoriaSelecionada = "Saúde";
+                  });
+                },
                 child: Text(
                   "Saúde",
                   style: TextStyle(
-                    color: AppColors.principal,
+                    color: categoriaSelecionada == "Saúde" ? Colors.white : AppColors.principal,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -42,14 +48,18 @@ class _RegisterCategoryState extends State<RegisterCategory> {
 
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.background,
+                  backgroundColor: categoriaSelecionada == "Trabalho" ? AppColors.principal : AppColors.background,
                   side: BorderSide(color: AppColors.principal),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  setState(() {
+                    categoriaSelecionada = "Trabalho";
+                  });
+                },
                 child: Text(
                   "Trabalho",
                   style: TextStyle(
-                    color: AppColors.principal,
+                    color: categoriaSelecionada == "Trabalho" ? Colors.white : AppColors.principal,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -59,14 +69,18 @@ class _RegisterCategoryState extends State<RegisterCategory> {
 
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.background,
+                  backgroundColor: categoriaSelecionada == "Estudos" ? AppColors.principal : AppColors.background,
                   side: BorderSide(color: AppColors.principal),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  setState(() {
+                    categoriaSelecionada = "Estudos";
+                  });
+                },
                 child: Text(
                   "Estudos",
                   style: TextStyle(
-                    color: AppColors.principal,
+                    color: categoriaSelecionada == "Estudos" ? Colors.white : AppColors.principal,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -79,14 +93,18 @@ class _RegisterCategoryState extends State<RegisterCategory> {
             children: [
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.background,
+                  backgroundColor: categoriaSelecionada == "Pessoal" ? AppColors.principal : AppColors.background,
                   side: BorderSide(color: AppColors.principal),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  setState(() {
+                    categoriaSelecionada = "Pessoal";
+                  });
+                },
                 child: Text(
                   "Pessoal",
                   style: TextStyle(
-                    color: AppColors.principal,
+                    color: categoriaSelecionada == "Pessoal" ? Colors.white : AppColors.principal,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -96,14 +114,18 @@ class _RegisterCategoryState extends State<RegisterCategory> {
           
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.background,
+                  backgroundColor: categoriaSelecionada == "Esporte" ? AppColors.principal : AppColors.background,
                   side: BorderSide(color: AppColors.principal),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  setState(() {
+                    categoriaSelecionada = "Esporte";
+                  });
+                },
                 child: Text(
                   "Esporte",
                   style: TextStyle(
-                    color: AppColors.principal,
+                    color: categoriaSelecionada == "Esporte" ? Colors.white : AppColors.principal,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -113,14 +135,18 @@ class _RegisterCategoryState extends State<RegisterCategory> {
           
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.background,
+                  backgroundColor: categoriaSelecionada == "Água" ? AppColors.principal : AppColors.background,
                   side: BorderSide(color: AppColors.principal),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  setState(() {
+                    categoriaSelecionada = "Água";
+                  });
+                },
                 child: Text(
                   "Água",
                   style: TextStyle(
-                    color: AppColors.principal,
+                    color: categoriaSelecionada == "Água" ? Colors.white : AppColors.principal,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
