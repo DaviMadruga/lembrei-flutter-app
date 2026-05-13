@@ -2,9 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:lembrei/theme/app_text_styles.dart';
 import 'package:lembrei/utils/format_date.dart';
 import 'package:lembrei/utils/reminder_card.dart';
+import 'package:lembrei/models/lembrete.dart';
 
 class Cards extends StatelessWidget {
-  const Cards({super.key});
+  final List<Lembrete> lembretes;
+
+  const Cards({
+    super.key,
+    required this.lembretes,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,44 +22,29 @@ class Cards extends StatelessWidget {
           style: AppTextStyles.tituloMedio,
         ),
 
-        SizedBox(height: 5,),
-
-        SizedBox(
-          height: 350,
-          child: ListView.builder(
-            itemCount: 10,
-            itemBuilder: (context,index){
-              return ReminderCard(
-                titulo: "Estudar Flutter", 
-                horario: "16:00", 
-                categoria: "Estudos", 
-                status:  "Pendente",
-              );
-            }
-          ),
-        ),
-
-        SizedBox(height: 10,),
-
-        Text(
-          "Amanhã - ${formatDate(DateTime.now().add(Duration(days: 1)))}",
-          style: AppTextStyles.tituloMedio,
-        ),
-
-        SizedBox(height: 5,),
+        SizedBox(height: 5),
 
         Expanded(
-          child: ListView.builder(
-            itemCount: 10,
-            itemBuilder: (context,index){
-              return ReminderCard(
-                titulo: "Estudar Flutter", 
-                horario: "16:00", 
-                categoria: "Estudos", 
-                status:  "Pendente",
-              );
-            }
-          ),
+          child: lembretes.isEmpty
+              ? const Center(
+                  child: Text(
+                    "Nenhum lembrete cadastrado",
+                    style: AppTextStyles.tituloMedio,
+                  ),
+                )
+              : ListView.builder(
+                  itemCount: lembretes.length,
+                  itemBuilder: (context, index) {
+                    final lembrete = lembretes[index];
+
+                    return ReminderCard(
+                      titulo: lembrete.titulo,
+                      horario: lembrete.hora,
+                      categoria: lembrete.categoria,
+                      status: lembrete.status,
+                    );
+                  },
+                ),
         ),
       ],
     );

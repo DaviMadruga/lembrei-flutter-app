@@ -5,9 +5,17 @@ import 'package:lembrei/widgets/home/cards.dart';
 import 'package:lembrei/widgets/home/filters_status.dart';
 import 'package:lembrei/widgets/home/home_header.dart';
 import 'package:lembrei/widgets/home/quick_search.dart';
+import 'package:lembrei/models/lembrete.dart';
 
-class HomeScreens extends StatelessWidget {
+class HomeScreens extends StatefulWidget {
   const HomeScreens({super.key});
+
+  @override
+  State<HomeScreens> createState() => _HomeScreensState();
+}
+
+class _HomeScreensState extends State<HomeScreens> {
+  final List<Lembrete> lembretes = [];
 
   @override
   Widget build(BuildContext context) {
@@ -19,12 +27,12 @@ class HomeScreens extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               HomeHeader(),
-              SizedBox(height: 10,),
+              SizedBox(height: 10),
               QuickSearch(),
-              SizedBox(height: 10,),
+              SizedBox(height: 10),
               FiltersStatus(),
-              SizedBox(height: 10,),
-              Expanded(child: Cards()),
+              SizedBox(height: 10),
+              Expanded(child: Cards(lembretes: lembretes)),
             ],
           ),
         ),
@@ -33,13 +41,17 @@ class HomeScreens extends StatelessWidget {
         width: 70,
         height: 70,
         child: FloatingActionButton(
-          onPressed: () {
-            Navigator.push(
-              context, 
-              MaterialPageRoute(
-                builder: (context) => RegisterScreens(),
-              ),
+          onPressed: () async {
+            final novolembrete = await Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => RegisterScreens()),
             );
+
+            if (novolembrete != null) {
+              setState(() {
+                lembretes.add(novolembrete);
+              });
+            }
           },
           backgroundColor: AppColors.principal,
           elevation: 6,
