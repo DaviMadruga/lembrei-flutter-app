@@ -3,14 +3,20 @@ import 'package:lembrei/theme/app_colors.dart';
 import 'package:lembrei/theme/app_text_styles.dart';
 
 class RegisterCategory extends StatefulWidget {
-  const RegisterCategory({super.key});
+  final String? categoriaSelecionada;
+  final ValueChanged<String> onCategoriaSelecionada;
+
+  const RegisterCategory({
+    super.key,
+    required this.categoriaSelecionada,
+    required this.onCategoriaSelecionada,
+  });
 
   @override
   State<RegisterCategory> createState() => _RegisterCategoryState();
 }
 
 class _RegisterCategoryState extends State<RegisterCategory> {
-  String? categoriaSelecionada;
 
   @override
   Widget build(BuildContext context) {
@@ -27,18 +33,16 @@ class _RegisterCategoryState extends State<RegisterCategory> {
             children: [
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: categoriaSelecionada == "Saúde" ? AppColors.principal : AppColors.background,
+                  backgroundColor: widget.categoriaSelecionada == "Saúde" ? AppColors.principal : AppColors.background,
                   side: BorderSide(color: AppColors.principal),
                 ),
                 onPressed: () {
-                  setState(() {
-                    categoriaSelecionada = "Saúde";
-                  });
+                  widget.onCategoriaSelecionada("Saúde");
                 },
                 child: Text(
                   "Saúde",
                   style: TextStyle(
-                    color: categoriaSelecionada == "Saúde" ? Colors.white : AppColors.principal,
+                    color: widget.categoriaSelecionada == "Saúde" ? Colors.white : AppColors.principal,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -48,18 +52,16 @@ class _RegisterCategoryState extends State<RegisterCategory> {
 
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: categoriaSelecionada == "Trabalho" ? AppColors.principal : AppColors.background,
+                  backgroundColor: widget.categoriaSelecionada == "Trabalho" ? AppColors.principal : AppColors.background,
                   side: BorderSide(color: AppColors.principal),
                 ),
                 onPressed: () {
-                  setState(() {
-                    categoriaSelecionada = "Trabalho";
-                  });
+                  widget.onCategoriaSelecionada("Trabalho");
                 },
                 child: Text(
                   "Trabalho",
                   style: TextStyle(
-                    color: categoriaSelecionada == "Trabalho" ? Colors.white : AppColors.principal,
+                    color: widget.categoriaSelecionada == "Trabalho" ? Colors.white : AppColors.principal,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -69,18 +71,16 @@ class _RegisterCategoryState extends State<RegisterCategory> {
 
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: categoriaSelecionada == "Estudos" ? AppColors.principal : AppColors.background,
+                  backgroundColor: widget.categoriaSelecionada == "Estudos" ? AppColors.principal : AppColors.background,
                   side: BorderSide(color: AppColors.principal),
                 ),
                 onPressed: () {
-                  setState(() {
-                    categoriaSelecionada = "Estudos";
-                  });
+                  widget.onCategoriaSelecionada("Estudos");
                 },
                 child: Text(
                   "Estudos",
                   style: TextStyle(
-                    color: categoriaSelecionada == "Estudos" ? Colors.white : AppColors.principal,
+                    color: widget.categoriaSelecionada == "Estudos" ? Colors.white : AppColors.principal,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -93,18 +93,16 @@ class _RegisterCategoryState extends State<RegisterCategory> {
             children: [
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: categoriaSelecionada == "Pessoal" ? AppColors.principal : AppColors.background,
+                  backgroundColor: widget.categoriaSelecionada == "Pessoal" ? AppColors.principal : AppColors.background,
                   side: BorderSide(color: AppColors.principal),
                 ),
                 onPressed: () {
-                  setState(() {
-                    categoriaSelecionada = "Pessoal";
-                  });
+                  widget.onCategoriaSelecionada("Pessoal");
                 },
                 child: Text(
                   "Pessoal",
                   style: TextStyle(
-                    color: categoriaSelecionada == "Pessoal" ? Colors.white : AppColors.principal,
+                    color: widget.categoriaSelecionada == "Pessoal" ? Colors.white : AppColors.principal,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -114,18 +112,16 @@ class _RegisterCategoryState extends State<RegisterCategory> {
           
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: categoriaSelecionada == "Esporte" ? AppColors.principal : AppColors.background,
+                  backgroundColor: widget.categoriaSelecionada == "Esporte" ? AppColors.principal : AppColors.background,
                   side: BorderSide(color: AppColors.principal),
                 ),
                 onPressed: () {
-                  setState(() {
-                    categoriaSelecionada = "Esporte";
-                  });
+                  widget.onCategoriaSelecionada("Esporte");
                 },
                 child: Text(
                   "Esporte",
                   style: TextStyle(
-                    color: categoriaSelecionada == "Esporte" ? Colors.white : AppColors.principal,
+                    color: widget.categoriaSelecionada == "Esporte" ? Colors.white : AppColors.principal,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -135,18 +131,16 @@ class _RegisterCategoryState extends State<RegisterCategory> {
           
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: categoriaSelecionada == "Água" ? AppColors.principal : AppColors.background,
+                  backgroundColor: widget.categoriaSelecionada == "Água" ? AppColors.principal : AppColors.background,
                   side: BorderSide(color: AppColors.principal),
                 ),
                 onPressed: () {
-                  setState(() {
-                    categoriaSelecionada = "Água";
-                  });
+                  widget.onCategoriaSelecionada("Água");
                 },
                 child: Text(
                   "Água",
                   style: TextStyle(
-                    color: categoriaSelecionada == "Água" ? Colors.white : AppColors.principal,
+                    color: widget.categoriaSelecionada == "Água" ? Colors.white : AppColors.principal,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

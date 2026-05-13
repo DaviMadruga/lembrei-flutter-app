@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:lembrei/theme/app_colors.dart';
 
 class RegisterSalve extends StatelessWidget {
-  const RegisterSalve({super.key});
+  final VoidCallback onPressed;
+  const RegisterSalve({
+    super.key,
+    required this.onPressed,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -15,13 +19,7 @@ class RegisterSalve extends StatelessWidget {
             borderRadius: BorderRadiusGeometry.circular(12),
           ),
         ),
-        onPressed: () {
-          final isValid = Form.of(context).validate();
-
-          if (isValid) {
-            // Continua aqui com a logica de salvar.
-          }
-        }, 
+        onPressed: onPressed,
         child: Text(
           "Salvar lembrete",
           style: TextStyle(

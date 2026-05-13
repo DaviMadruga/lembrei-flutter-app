@@ -4,22 +4,20 @@ import 'package:lembrei/theme/app_colors.dart';
 import 'package:lembrei/theme/app_text_styles.dart';
 
 class RegisterDateTime extends StatefulWidget {
-  const RegisterDateTime({super.key});
+  final TextEditingController dateController;
+  final TextEditingController timeController;
+
+  const RegisterDateTime({
+    super.key,
+    required this.dateController,
+    required this.timeController,
+  });
 
   @override
   State<RegisterDateTime> createState() => _RegisterDateTime();
 }
 
 class _RegisterDateTime extends State<RegisterDateTime> {
-  final dateController = TextEditingController();
-  final timeController = TextEditingController();
-
-  @override
-  void dispose() {
-    dateController.dispose();
-    timeController.dispose();
-    super.dispose();
-  }
 
   Future<void> _selectDate() async {
     final date = await showDatePicker(
@@ -32,7 +30,7 @@ class _RegisterDateTime extends State<RegisterDateTime> {
     );
 
     if (date != null) {
-      dateController.text =
+      widget.dateController.text =
           "${date.day.toString().padLeft(2, '0')}/"
           "${date.month.toString().padLeft(2, '0')}/"
           "${date.year}";
@@ -55,7 +53,7 @@ class _RegisterDateTime extends State<RegisterDateTime> {
     );
 
     if (time != null) {
-      timeController.text =
+      widget.timeController.text =
           "${time.hour.toString().padLeft(2, '0')}:"
           "${time.minute.toString().padLeft(2, '0')}";
     }
@@ -71,7 +69,7 @@ class _RegisterDateTime extends State<RegisterDateTime> {
           const Text("Data", style: AppTextStyles.tituloMedio),
           const SizedBox(height: 8),
           TextFormField(
-            controller: dateController,
+            controller: widget.dateController,
             readOnly: true,
             onTap: _selectDate,
             decoration: InputDecoration(
@@ -98,7 +96,7 @@ class _RegisterDateTime extends State<RegisterDateTime> {
           const Text("Hora", style: AppTextStyles.tituloMedio),
           const SizedBox(height: 8),
           TextFormField(
-            controller: timeController,
+            controller: widget.timeController,
             readOnly: true,
             onTap: _selectTime,
             decoration: InputDecoration(

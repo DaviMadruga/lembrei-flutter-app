@@ -7,12 +7,14 @@ class RegisterTextformfield extends StatelessWidget {
   final String nome;
   final String exemplo;
   final int linhas;
+  final TextEditingController controller;
 
   const RegisterTextformfield({
     super.key,
     required this.nome,
     required this.exemplo,
     required this.linhas,
+    required this.controller,
   });
 
   @override
@@ -30,6 +32,7 @@ class RegisterTextformfield extends StatelessWidget {
           SizedBox(height: 8,),
       
           TextFormField(
+            controller: controller,
             validator: ValidationBuilder(
               requiredMessage: "Campo Obrigatório"
             ).build(),
